@@ -83,6 +83,10 @@ class Spacecraft {
                 break;
         }
     }
+
+    turnUp() {
+        this.direction = 'Up';
+    }
 };
 
 module.exports = Spacecraft;
