@@ -69,12 +69,12 @@ describe('Spacecraft Control Tests', () => {
             { initialDirection: 'S', expectedDirection: 'W' },
             { initialDirection: 'W', expectedDirection: 'N' },
         ];
-    
+
         testCases.forEach(({ initialDirection, expectedDirection }) => {
             test(`From facing ${initialDirection}`, () => {
                 const spacecraft = new Spacecraft({ x: 0, y: 0, z: 0 }, initialDirection);
                 spacecraft.turnRight();
-    
+
                 expect(spacecraft.direction).toBe(expectedDirection);
             });
         });
@@ -100,6 +100,33 @@ describe('Spacecraft Control Tests', () => {
         });
     });
     
+});
+
+describe('Edge Cases for Spacecraft Control Tests', () => {
+    describe('Turn Right from Up or Down direction', () => {
+        const testCases = [
+            { initialDirection: 'N', expectedDirection: 'E' },
+            { initialDirection: 'E', expectedDirection: 'S' },
+            { initialDirection: 'S', expectedDirection: 'W' },
+            { initialDirection: 'W', expectedDirection: 'N' },
+        ];
+
+        testCases.forEach(({ initialDirection, expectedDirection }) => {
+            test(`with previous XY plane direction ${initialDirection}`, () => {
+                const spacecraft = new Spacecraft({ x: 0, y: 0, z: 0 }, initialDirection);
+
+                // Turn Up or Down
+                // spacecraft.turnUp();
+                // expect(spacecraft.direction).toBe('Up');
+                spacecraft.turnDown();
+                expect(spacecraft.direction).toBe('Down');
+
+                // Turn Right from Up
+                spacecraft.turnRight();
+                expect(spacecraft.direction).toBe(expectedDirection);
+            });
+        });
+    });
 });
 
 
