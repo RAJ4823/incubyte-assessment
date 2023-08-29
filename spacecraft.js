@@ -107,6 +107,31 @@ class Spacecraft {
         }
         this.direction = 'Down';
     }
+
+    executeCommands(commands) {
+        for (const command of commands) {
+            switch (command) {
+                case 'f':
+                    this.moveForward();
+                    break;
+                case 'b':
+                    this.moveBackward();
+                    break;
+                case 'l':
+                    this.turnLeft();
+                    break;
+                case 'r':
+                    this.turnRight();
+                    break;
+                case 'u':
+                    this.turnUp();
+                    break;
+                case 'd':
+                    this.turnDown();
+                    break;
+            }
+        }
+    }
 };
 
 module.exports = Spacecraft;
