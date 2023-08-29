@@ -154,5 +154,21 @@ describe('Edge Cases for Spacecraft Control Tests', () => {
     });
 });
 
+describe('Spacecraft Commands Execution Tests', () => {
+    test('Example Test Case', () => {
+        const initialPosition = { x: 0, y: 0, z: 0 };
+        const initialDirection = 'N';
+        const commands = ['f', 'r', 'u', 'b', 'l'];
 
+        const expectedPosition = { x: 0, y: 1, z: -1 };
+        const expectedDirection = 'N';
 
+        // Execute the commands on chandrayaan3
+        let Chandrayaan = new Spacecraft(initialPosition, initialDirection);
+        chandrayaan3.executeCommands(commands);
+
+        // Compare expected results with the actual ones
+        expect(chandrayaan3.position).toEqual(expectedPosition);
+        expect(chandrayaan3.direction).toBe(expectedDirection);
+    });
+})
