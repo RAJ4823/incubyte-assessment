@@ -64,6 +64,11 @@ class Spacecraft {
             case 'W':
                 this.direction = 'S';
                 break;
+            case 'Up':
+            case 'Down':
+                this.direction = this.previousXYPlaneDirection;
+                this.turnLeft();
+                break;
         }
     }
 
@@ -81,14 +86,25 @@ class Spacecraft {
             case 'W':
                 this.direction = 'N';
                 break;
+            case 'Up':
+            case 'Down':
+                this.direction = this.previousXYPlaneDirection;
+                this.turnRight();
+                break;
         }
     }
 
     turnUp() {
+        if (this.direction !== 'Up' && this.direction !== 'Down') {
+            this.previousXYPlaneDirection = this.direction;
+        }
         this.direction = 'Up';
     }
-    
+
     turnDown() {
+        if (this.direction !== 'Up' && this.direction !== 'Down') {
+            this.previousXYPlaneDirection = this.direction;
+        }
         this.direction = 'Down';
     }
 };
