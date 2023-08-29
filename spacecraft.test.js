@@ -80,7 +80,16 @@ describe('Spacecraft Control Tests', () => {
         });
     });
     
-
+    describe('Turn Up', () => {
+        test('From XY plane', () => {
+            // The initial direction doesn't matter; the final direction will be 'Up'.
+            const spacecraft = new Spacecraft({ x: 0, y: 0, z: 0 }, 'N');
+            spacecraft.turnUp();
+    
+            expect(spacecraft.direction).toBe('Up');
+        });
+    });
+    
 });
 
 
