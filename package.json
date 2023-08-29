@@ -1,0 +1,14 @@
+{
+  "name": "incubyte-assessment",
+  "version": "1.0.0",
+  "description": "Chandrayaan 3 Lunar Craft: Galactic Space Craft Control",
+  "main": "spacecraft.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Raj Patel",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.6.4"
+  }
+}
