@@ -79,23 +79,23 @@ describe('Spacecraft Control Tests', () => {
             });
         });
     });
-    
+
     describe('Turn Up', () => {
         test('From XY plane', () => {
             // The initial direction doesn't matter; the final direction will be 'Up'.
             const spacecraft = new Spacecraft({ x: 0, y: 0, z: 0 }, 'N');
             spacecraft.turnUp();
-    
+
             expect(spacecraft.direction).toBe('Up');
         });
     });
-    
+
     describe('Turn Down', () => {
         test('From XY plane', () => {
             // The initial direction doesn't matter; the final direction will be 'Down'.
             const spacecraft = new Spacecraft({ x: 0, y: 0, z: 0 }, 'N');
             spacecraft.turnDown();
-    
+
             expect(spacecraft.direction).toBe('Down');
         });
     });
@@ -164,11 +164,35 @@ describe('Spacecraft Commands Execution Tests', () => {
         const expectedDirection = 'N';
 
         // Execute the commands on chandrayaan3
-        let Chandrayaan = new Spacecraft(initialPosition, initialDirection);
+        let chandrayaan3 = new Spacecraft(initialPosition, initialDirection);
         chandrayaan3.executeCommands(commands);
 
         // Compare expected results with the actual ones
         expect(chandrayaan3.position).toEqual(expectedPosition);
         expect(chandrayaan3.direction).toBe(expectedDirection);
+    });
+
+    test('Test Case 1', () => {
+        const spacecraft = new Spacecraft({ x: 0, y: 0, z: 0 }, 'N');
+        spacecraft.executeCommands(['f', 'f', 'r', 'f', 'f']);
+
+        expect(spacecraft.position).toEqual({ x: 2, y: 2, z: 0 });
+        expect(spacecraft.direction).toBe('E');
+    });
+
+    test('Test Case 2', () => {
+        const spacecraft = new Spacecraft({ x: 0, y: 0, z: 0 }, 'S');
+        spacecraft.executeCommands(['u', 'f', 'd', 'f']);
+
+        expect(spacecraft.position).toEqual({ x: 0, y: 0, z: 0 });
+        expect(spacecraft.direction).toBe('Down');
+    });
+
+    test('Test Case 3', () => {
+        const spacecraft = new Spacecraft({ x: 1, y: -2, z: 0 }, 'W');
+        spacecraft.executeCommands(['l', 'u', 'b', 'r', 'f', 'r', 'u', 'l']);
+
+        expect(spacecraft.position).toEqual({ x: 0, y: -2, z: -1 });
+        expect(spacecraft.direction).toBe('W');
     });
 })
