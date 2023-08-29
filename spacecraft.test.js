@@ -62,6 +62,25 @@ describe('Spacecraft Control Tests', () => {
         });
     });
 
+    describe('Turn Right (in XY Plane)', () => {
+        const testCases = [
+            { initialDirection: 'N', expectedDirection: 'E' },
+            { initialDirection: 'E', expectedDirection: 'S' },
+            { initialDirection: 'S', expectedDirection: 'W' },
+            { initialDirection: 'W', expectedDirection: 'N' },
+        ];
+    
+        testCases.forEach(({ initialDirection, expectedDirection }) => {
+            test(`From facing ${initialDirection}`, () => {
+                const spacecraft = new Spacecraft({ x: 0, y: 0, z: 0 }, initialDirection);
+                spacecraft.turnRight();
+    
+                expect(spacecraft.direction).toBe(expectedDirection);
+            });
+        });
+    });
+    
+
 });
 
 
