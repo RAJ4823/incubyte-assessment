@@ -90,6 +90,42 @@ This commit confirms the successful implementation of the 'executeCommands' func
 
 In this commit, I've developed a set of tests to thoroughly assess the functionality and correctness of the 'executeCommands' method in the Spacecraft class.
 
-21. #### [📝 Updated README with Commit Explanations](https://github.com/RAJ4823/incubyte-assessment/blob/main/README.md)
+21. #### [📝 Updated README with Commit Explanations](https://github.com/RAJ4823/incubyte-assessment/commit/de99578d7ae7453ee8690b8c172bb4d0897fe82f)
 
 In this commit, I've updated the README file to provide comprehensive explanations for all commits made throughout the project's development. Each commit's purpose, changes, and outcomes are clearly documented, enhancing the understanding of the project's progression and codebase.
+
+22. #### [🧪 Invalid Command Test](https://github.com/RAJ4823/incubyte-assessment/commit/a0bcdb0ac36a36b9d238d831787f251fa3b6e869)
+
+Added test cases to check the behavior of the spacecraft when it encounters invalid commands during execution.
+
+23. #### [🐛 Fixed Invalid Test by validating commands](https://github.com/RAJ4823/incubyte-assessment/commit/ac88f37cc6e22ef27f7a8a2188fc2f2ee170f55f)
+
+Addressed the failing invalid command tests by implementing command validation to ensure that only valid commands are executed.
+
+24. #### [🧪 3D Complex Movements Tests added](https://github.com/RAJ4823/incubyte-assessment/commit/91e9ec529c6dfd223331d20b0f399768d90dd61a)
+
+Introduced test cases to validate the spacecraft's functionality for performing complex 3D movements involving turns and rotations through different directions and planes.
+
+25. #### [✨ Added Constants for Complex movements in 3D](https://github.com/RAJ4823/incubyte-assessment/commit/dcf3d2f4b351c29aad7aac00246bf876c6dcc441)
+
+Defined constants that represent complex movements involving changes in 3D planes and directions, providing a foundation for implementing the corresponding logic.
+
+26. #### [🔄 Fixed 'turnLeft' and 'turnRight' functions](https://github.com/RAJ4823/incubyte-assessment/commit/b2fedf81e0e3af3cd2ace880fffa8db82f29b0cb) 
+
+Improved the 'turnLeft' and 'turnRight' functions to handle complex plane transitions and direction changes based on the current plane.
+
+27. #### [🔄 Fixed 'turnUp' and 'turnDown' functions](https://github.com/RAJ4823/incubyte-assessment/commit/6eda52e143124b0f96eecd2ff0583f0f9a0f7f7a)
+
+Enhanced the 'turnUp' and 'turnDown' functions to ensure proper plane transitions and direction adjustments according to the established constants.
+
+28. #### [📝 Updated README](https://github.com/RAJ4823/incubyte-assessment/blob/main/README.md)
+
+Provided an update to the README to reflect the newly added support for complex 3D commands in the spacecraft code, along with brief explanations of the commits made. 
+
+### Conclusion: -
+
+- The Chandrayaan 3 spacecraft now executes diverse commands, showcasing effective TDD and systematic design.
+
+- Through the application of Test-Driven Development (TDD) principles, we have successfully designed and implemented a comprehensive spacecraft control system capable of navigating and maneuvering in 3D space.
+
+- My approach ensures reliable performance and adaptation to complex 3D space challenges.
