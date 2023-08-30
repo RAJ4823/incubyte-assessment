@@ -47,6 +47,12 @@ class Spacecraft {
     constructor(position, direction) {
         this.position = position;
         this.direction = direction;
+        // Default Plane
+        if(direction === 'Up' || direction === 'Down') {
+            this.plane = 'XZ';
+        } else {
+            this.plane = 'XY';
+        }
     }
 
     moveForward() {
@@ -96,47 +102,17 @@ class Spacecraft {
     }
 
     turnLeft() {
-        switch (this.direction) {
-            case 'N':
-                this.direction = 'W';
-                break;
-            case 'S':
-                this.direction = 'E';
-                break;
-            case 'E':
-                this.direction = 'N';
-                break;
-            case 'W':
-                this.direction = 'S';
-                break;
-            case 'Up':
-            case 'Down':
-                this.direction = this.previousXYPlaneDirection;
-                this.turnLeft();
-                break;
-        }
+        const currentPlane = this.plane;
+        const currentDirectionIndex = planeDirections[currentPlane].indexOf(this.direction);
+        const newDirectionIndex = (currentDirectionIndex + 3) % 4;
+        this.direction = planeDirections[currentPlane][newDirectionIndex];
     }
 
     turnRight() {
-        switch (this.direction) {
-            case 'N':
-                this.direction = 'E';
-                break;
-            case 'S':
-                this.direction = 'W';
-                break;
-            case 'E':
-                this.direction = 'S';
-                break;
-            case 'W':
-                this.direction = 'N';
-                break;
-            case 'Up':
-            case 'Down':
-                this.direction = this.previousXYPlaneDirection;
-                this.turnRight();
-                break;
-        }
+        const currentPlane = this.plane;
+        const currentDirectionIndex = planeDirections[currentPlane].indexOf(this.direction);
+        const newDirectionIndex = (currentDirectionIndex + 1) % 4;
+        this.direction = planeDirections[currentPlane][newDirectionIndex];
     }
 
     turnUp() {
