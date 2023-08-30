@@ -184,8 +184,8 @@ describe('Spacecraft Commands Execution Tests', () => {
         const spacecraft = new Spacecraft({ x: 0, y: 0, z: 0 }, 'S');
         spacecraft.executeCommands(['u', 'f', 'd', 'f']);
 
-        expect(spacecraft.position).toEqual({ x: 0, y: 0, z: 0 });
-        expect(spacecraft.direction).toBe('Down');
+        expect(spacecraft.position).toEqual({ x: 0, y: -1, z: 1 });
+        expect(spacecraft.direction).toBe('S');
     });
 
     test('Test Case 3', () => {
@@ -203,5 +203,65 @@ describe('Spacecraft Commands Execution Tests', () => {
         // Spacecraft should not execute commands, if it contains one or more invalid commands
         expect(spacecraft.position).toEqual({ x: 1, y: 1, z: 1 });
         expect(spacecraft.direction).toBe('N');
+    });
+})
+
+describe('Spacecraft Complex Commands Execution Tests', () => {
+    test('Hard Test Case 1', () => {
+        // Initial position and direction
+        const initialPosition = { x: 0, y: 0, z: 0 };
+        const initialDirection = 'N';
+        const commands = ['u', 'u', 'u', 'u'];
+
+        // Expected final position and direction
+        const expectedPosition = { x: 0, y: 0, z: 0 };
+        const expectedDirection = 'N';
+
+        // Execute commands on chandrayaan3
+        let chandrayaan3 = new Spacecraft(initialPosition, initialDirection);
+        chandrayaan3.executeCommands(commands);
+
+        // Compare with actual
+        expect(chandrayaan3.position).toEqual(expectedPosition);
+        expect(chandrayaan3.direction).toBe(expectedDirection);
+    });
+
+    test('Hard Test Case 2', () => {
+        // Initial position and direction
+        const initialPosition = { x: 0, y: 0, z: 0 };
+        const initialDirection = 'N';
+        const commands = ['u', 'r', 'u', 'l', 'd', 'l', 'd', 'd', 'd', 'r', 'd'];
+
+        // Expected final position and direction
+        const expectedPosition = { x: 0, y: 0, z: 0 };
+        const expectedDirection = 'N';
+
+        // Execute commands on chandrayaan3
+        let chandrayaan3 = new Spacecraft(initialPosition, initialDirection);
+        chandrayaan3.executeCommands(commands);
+
+        // Compare with actual
+        expect(chandrayaan3.position).toEqual(expectedPosition);
+        expect(chandrayaan3.direction).toBe(expectedDirection);
+    });
+
+
+    test('Hard Test Case 3', () => {
+        // Initial position and direction
+        const initialPosition = { x: 0, y: 0, z: 0 };
+        const initialDirection = 'N';
+        const commands = ['f', 'u', 'f', 'r', 'f', 'u', 'b'];
+
+        // Expected final position and direction
+        const expectedPosition = { x: 1, y: 2, z: 1 };
+        const expectedDirection = 'S';
+
+        // Execute commands on chandrayaan3
+        let chandrayaan3 = new Spacecraft(initialPosition, initialDirection);
+        chandrayaan3.executeCommands(commands);
+
+        // Compare with actual
+        expect(chandrayaan3.position).toEqual(expectedPosition);
+        expect(chandrayaan3.direction).toBe(expectedDirection);
     });
 })
