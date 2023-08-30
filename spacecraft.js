@@ -109,6 +109,10 @@ class Spacecraft {
     }
 
     executeCommands(commands) {
+        if(!this.isValidCommands(commands)) {
+            console.log("Execution aborted due to invalid commands");
+            return;
+        }
         for (const command of commands) {
             switch (command) {
                 case 'f':
@@ -131,6 +135,21 @@ class Spacecraft {
                     break;
             }
         }
+    }
+
+    isValidCommands(commands) {
+        let invalidCommands = [];
+        for (const command of commands) {
+            if (!['f', 'b', 'l', 'r', 'u', 'd'].includes(command)) {
+                invalidCommands.push(command);
+            }
+        }
+
+        if(invalidCommands.length > 0) {
+            console.log('Invalid Commands:', invalidCommands);
+            return false;
+        }
+        return true;
     }
 };
 
