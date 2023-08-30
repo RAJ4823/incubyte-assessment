@@ -1,3 +1,48 @@
+// Stores the possible directions in each plane
+const planeDirections = {
+    'XY': ['N', 'E', 'S', 'W'],  
+    'YX': ['N', 'W', 'S', 'E'],     
+    'YZ': ['Up', 'S', 'Down', 'N'],
+    'ZY': ['Up', 'N', 'Down', 'S'],
+    'XZ': ['Up', 'E', 'Down', 'W'],
+    'ZX': ['Up', 'W', 'Down', 'E'],
+}
+
+// Stores the plane transitions for turning up and down from different directions
+const planeTransitions = {
+    'N': { 'turnUp': 'XZ', 'turnDown': 'ZX' },
+    'S': { 'turnUp': 'ZX', 'turnDown': 'XZ' },
+    'E': { 'turnUp': 'YZ', 'turnDown': 'ZY' },
+    'W': { 'turnUp': 'ZY', 'turnDown': 'YZ' },
+    'Up': { 'turnUp': 'YX', 'turnDown': 'XY' },
+    'Down': { 'turnUp': 'XY', 'turnDown': 'YX' },
+}
+
+// Stores the direction transitions based on the axis of rotation
+const directionTransitions = {
+    // N or S
+    'Y-Axis': {
+        'XY': { 'turnUp': 'Up', 'turnDown': 'Down' },
+        'YX': { 'turnUp': 'Down', 'turnDown': 'Up' },
+        'YZ': { 'turnUp': 'W', 'turnDown': 'E' },
+        'ZY': { 'turnUp': 'E', 'turnDown': 'W' },
+    },
+    // W or E
+    'X-Axis': {
+        'XY': { 'turnUp': 'Up', 'turnDown': 'Down' },
+        'YX': { 'turnUp': 'Down', 'turnDown': 'Up' },
+        'XZ': { 'turnUp': 'S', 'turnDown': 'N' },
+        'ZX': { 'turnUp': 'N', 'turnDown': 'S' },
+    },
+    // Up or Down
+    'Z-Axis': {
+        'YZ': { 'turnUp': 'W', 'turnDown': 'E' },
+        'ZY': { 'turnUp': 'E', 'turnDown': 'W' },
+        'XZ': { 'turnUp': 'S', 'turnDown': 'N' },
+        'ZX': { 'turnUp': 'N', 'turnDown': 'S' },
+    }
+};
+
 class Spacecraft {
     constructor(position, direction) {
         this.position = position;
