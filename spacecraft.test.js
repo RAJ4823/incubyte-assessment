@@ -195,4 +195,13 @@ describe('Spacecraft Commands Execution Tests', () => {
         expect(spacecraft.position).toEqual({ x: 0, y: -2, z: -1 });
         expect(spacecraft.direction).toBe('W');
     });
+
+    test('Invalid Test Case', () => {
+        const spacecraft = new Spacecraft({ x: 1, y: 1, z: 1 }, 'N');
+        spacecraft.executeCommands(['l', 'a', 'b', 'r']);
+
+        // Spacecraft should not execute commands, if it contains one or more invalid commands
+        expect(spacecraft.position).toEqual({ x: 1, y: 1, z: 1 });
+        expect(spacecraft.direction).toBe('N');
+    });
 })
