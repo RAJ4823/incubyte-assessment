@@ -116,17 +116,49 @@ class Spacecraft {
     }
 
     turnUp() {
-        if (this.direction !== 'Up' && this.direction !== 'Down') {
-            this.previousXYPlaneDirection = this.direction;
+        const currentPlane = this.plane;
+        const currentDirection = this.direction;
+
+        switch (currentDirection) {
+            case 'N':
+            case 'S':
+                this.direction = directionTransitions['Y-Axis'][currentPlane].turnUp;
+                this.plane = planeTransitions[currentDirection].turnUp;
+                break;
+            case 'W':
+            case 'E':
+                this.direction = directionTransitions['X-Axis'][currentPlane].turnUp;
+                this.plane = planeTransitions[currentDirection].turnUp;
+                break;
+            case 'Up':
+            case 'Down':
+                this.direction = directionTransitions['Z-Axis'][currentPlane].turnUp;
+                this.plane = planeTransitions[currentDirection].turnUp;
+                break;
         }
-        this.direction = 'Up';
     }
 
     turnDown() {
-        if (this.direction !== 'Up' && this.direction !== 'Down') {
-            this.previousXYPlaneDirection = this.direction;
+        const currentPlane = this.plane;
+        const currentDirection = this.direction;
+
+        switch (currentDirection) {
+            case 'N':
+            case 'S':
+                this.direction = directionTransitions['Y-Axis'][currentPlane].turnDown;
+                this.plane = planeTransitions[currentDirection].turnDown;
+                break;
+            case 'W':
+            case 'E':
+                this.direction = directionTransitions['X-Axis'][currentPlane].turnDown;
+                this.plane = planeTransitions[currentDirection].turnDown;
+                break;
+            case 'Up':
+            case 'Down':
+                this.direction = directionTransitions['Z-Axis'][currentPlane].turnDown;
+                this.plane = planeTransitions[currentDirection].turnDown;
+                break;
         }
-        this.direction = 'Down';
     }
 
     executeCommands(commands) {
